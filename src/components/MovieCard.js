@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function MovieCard(props) {
   return (
@@ -8,7 +9,10 @@ export default function MovieCard(props) {
         source={{uri: `https://image.tmdb.org/t/p/w500/${props.poster_path}`}}
         style={{width: '50%', height: 270, resizeMode: 'contain'}}
       />
-      <Text style={styles.title}>{props.title}</Text>
+      <View style={{flex: 1, flexWrap: 'wrap'}}>
+        <Text style={{...styles.title, ...styles.textColor}}>{props.title}</Text>
+        <Text style={{...styles.textColor, marginHorizontal: 10}}><Icon name="star" size={25} color="white" /> {props.vote_average}</Text>
+      </View>
     </View>
   )
 }
@@ -19,9 +23,11 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     flexDirection: 'row',
   },
+  textColor: {
+    color: 'rgba(255,255,255,0.8)',
+  },
   title: {
     flex: 1,
-    color: 'rgba(255,255,255,0.8)',
     fontSize: 20,
     marginHorizontal: 10,
     flexWrap: 'wrap',

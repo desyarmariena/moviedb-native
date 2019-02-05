@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableHighlight, Text, FlatList, Image } from 'react-native';
+import { TouchableHighlight, FlatList } from 'react-native';
 import axios from 'axios';
 import Config from 'react-native-config';
 import MovieCard from '../components/MovieCard';
@@ -9,6 +9,7 @@ class HomeScreen extends Component {
     movies: [],
     page: 1,
   }
+
   componentDidMount() {
     this.getMovieDataFromAPI();
   }
@@ -21,9 +22,12 @@ class HomeScreen extends Component {
       page: this.state.page + 1,
     });
   }
+
   onEndReached = () => {
+    //get more movies
     this.getMovieDataFromAPI();
   }
+
   render() {
     return (
       <FlatList
@@ -37,7 +41,6 @@ class HomeScreen extends Component {
           onPress={() => {
               this.props.navigation.navigate('Details', {
                 movieId: item.id,
-                poster: item.poster_path,
                 title: item.title,
               });
             }}            

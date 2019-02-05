@@ -1,4 +1,3 @@
-import React from 'react';
 import { createAppContainer, createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 //COMPONENTS
 import Home from '../containers/HomeScreen';
