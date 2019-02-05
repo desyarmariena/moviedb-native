@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, FlatList, View, Text, Image, TouchableHighlight, ScrollView } from 'react-native';
 import axios from 'axios';
 import Config from 'react-native-config';
-import MovieCard from '../components/MovieCard'
+import MovieCard from '../components/MovieCard';
+import Genres from '../components/Genres';
 
 class DetailMovie extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -70,6 +71,8 @@ class DetailMovie extends Component {
         <Text style={{...styles.title, ...styles.textColor}}>{movieDetail.title} ({this.extractMovieReleaseYear(movieDetail.release_date)})</Text>
         <Text style={{...styles.textColor, ...styles.overview}}>{movieDetail.overview}</Text>
 
+        <Genres genres={movieDetail.genres} />
+        
         <View>
           <Text style={{...styles.textColor, ...styles.otherMovie}}>Similar Movies</Text>
           <FlatList
